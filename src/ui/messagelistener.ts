@@ -1,6 +1,6 @@
 import { RUN_MODE } from "../common/utility"
 import { handleSetDiskOrFileFromBuffer, prepWritableFile } from "./devices/disk/driveprops"
-import { passSetRunMode, handleGetState6502, passSetBinaryBlock, handleGetRunMode } from "./main2worker"
+import { passSetRunMode, handleGetState6502, passSetBinaryBlock, handleGetRunMode, passPasteText } from "./main2worker"
 import { RestoreSaveState } from "./savestate"
 import { showGlobalProgressModal } from "./ui_utilities"
 import { handleInputParams } from "./inputparams"
@@ -163,6 +163,16 @@ export const messagelistener = (event: MessageEvent) => {
       console.log("Parameters updated successfully")
     } catch (error) {
       console.error("Error updating parameters:", error)
+    }
+  }
+
+  if (event.data.type === "paste") {
+    try {
+      const { text } = event.data
+      console.log("Received paste text:", text)
+      passPasteText(text)
+    } catch (error) {
+      console.error("Error handling paste message:", error)
     }
   }
 
