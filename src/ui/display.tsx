@@ -167,10 +167,11 @@ const DisplayApple2 = () => {
   const width = window.innerWidth ? window.innerWidth : (window.outerWidth - 20)
   const narrow = isTouchDevice || (width < (1.1 * height))
   const isLandscape = isTouchDevice && (width > height)
-  if (isTouchDevice) {
+  if (isTouchDevice || theme === UI_THEME.VC83) {
     document.body.style.marginLeft = "0"
     document.body.style.marginRight = "0"
-    document.body.style.marginTop = isLandscape ? "10px" : "0"
+    document.body.style.marginTop = (isLandscape && isTouchDevice) ? "10px" : "0"
+    document.body.style.marginBottom = "0"
   }
   const mem = handleGetMemSize() + 64
   const memSize = (mem > 1100) ? ((mem / 1024).toFixed() + " MB") : (mem + " KB")

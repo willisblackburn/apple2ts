@@ -448,7 +448,11 @@ const Apple2Canvas = (props: DisplayProps) => {
         let marginLeft = canvas.offsetLeft + width * xmargin
         let marginTop = canvas.offsetTop + height * ymargin
 
-        if (isMinimalTheme()) {
+        const isVC83 = getTheme() === UI_THEME.VC83
+        if (isVC83) {
+          marginLeft = 0
+          marginTop = 0
+        } else if (isMinimalTheme()) {
           marginLeft = (window.innerWidth - scanlinesWidth) / 2
           marginTop = ((window.innerHeight - scanlinesHeight) / 2)
 
@@ -567,7 +571,7 @@ const Apple2Canvas = (props: DisplayProps) => {
     ((showHgrMagnifier && !lockHgrMagnifierRef.current) ? "none" : "default")
 
   const machine = handleGetMachineName()
-  const bgImg = machine === "APPLE2P" ?
+  const bgImg = (machine === "APPLE2P" && !isVC83) ?
     window.assetRegistry.bgImgApple2Plus : window.assetRegistry.bgImage
   const backgroundImage = noBackgroundImage ? "" : `url(${bgImg})`
 
