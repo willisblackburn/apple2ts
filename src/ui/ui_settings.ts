@@ -172,8 +172,12 @@ export const getTheme = () => {
   return uiState.theme
 }
 
+export const isVC83Theme = () => {
+  return uiState.theme === UI_THEME.VC83
+}
+
 export const isMinimalTheme = () => {
-  return (uiState.theme == UI_THEME.MINIMAL && !isGameMode()) || isEmbedMode()
+  return (uiState.theme == UI_THEME.MINIMAL && !isGameMode()) || isEmbedMode() || isVC83Theme()
 }
 
 export const getTiltSensorJoystick = () => {

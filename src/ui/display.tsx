@@ -16,7 +16,7 @@ import FileInput from "./fileinput"
 import { RestoreSaveState } from "./savestate"
 import { handleFragment, handleInputParams } from "./inputparams"
 import { loadPreferences } from "./localstorage"
-import { RUN_MODE, TEST_DEBUG } from "../common/utility"
+import { RUN_MODE, TEST_DEBUG, UI_THEME } from "../common/utility"
 import DiskCollectionPanel from "./diskdialog/diskcollectionpanel"
 import { handleSetTheme } from "./ui_utilities"
 import DiskInterface from "./devices/disk/diskinterface"
@@ -181,7 +181,7 @@ const DisplayApple2 = () => {
   <a id="reportIssue" href="https://github.com/ct6502/apple2ts/issues">Report an Issue</a></span>
   </div>
   
-  if (isEmbedMode()) {
+  if (isEmbedMode() || getTheme() === UI_THEME.VC83) {
     return <Apple2Canvas {...props} />
   }
   return (

@@ -123,6 +123,10 @@ export const handleInputParams = (paramString = "") => {
       case "minimal":
         setTheme(UI_THEME.MINIMAL)
         break
+
+      case "vc83":
+        setTheme(UI_THEME.VC83)
+        break
     }
   }
 

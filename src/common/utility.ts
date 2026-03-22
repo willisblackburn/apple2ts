@@ -104,14 +104,16 @@ export enum ARROW {
 export enum UI_THEME {
   CLASSIC,
   DARK,
-  MINIMAL
+  MINIMAL,
+  VC83
 }
 
 export const themeToName = (theme: UI_THEME) => {
   return [
     "Classic",
     "Dark",
-    "Minimal"][theme]
+    "Minimal",
+    "VC83"][theme]
 }
 
 export type MouseEventSimple = {
