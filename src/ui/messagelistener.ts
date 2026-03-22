@@ -166,4 +166,18 @@ export const messagelistener = (event: MessageEvent) => {
     }
   }
 
+  if (event.data.type === "control") {
+    try {
+      const { action } = event.data
+      console.log("Received control action:", action)
+      if (action === "reset") {
+        passSetRunMode(RUN_MODE.NEED_RESET)
+      } else if (action === "reboot") {
+        passSetRunMode(RUN_MODE.NEED_BOOT)
+      }
+    } catch (error) {
+      console.error("Error handling control message:", error)
+    }
+  }
+
 }
