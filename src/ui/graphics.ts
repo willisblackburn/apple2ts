@@ -587,7 +587,7 @@ export const getCanvasSize = () => {
   const isCanvasFullScreen = document.fullscreenElement !== null
   const isVC83 = isVC83Theme()
   const noBackgroundImage = isTouchDevice || isCanvasFullScreen || (isMinimalTheme() && !isVC83)
-  const margin = (handleGetMachineName() === "APPLE2P" && !isCanvasFullScreen) ? 0.17 : 0.075
+  const margin = (handleGetMachineName() === "APPLE2P" && !isCanvasFullScreen && !isVC83) ? 0.17 : 0.075
   xmargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : (isTouchDevice ? 0.01 : margin)
   ymargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : (isTouchDevice ? 0.01 : margin)
   const screenRatio = 1.4583334 // 1.33  // (20 * 40) / (24 * 24)
@@ -597,7 +597,7 @@ export const getCanvasSize = () => {
   let width = window.innerWidth ? window.innerWidth : window.outerWidth
   let height = window.innerHeight ? window.innerHeight : (window.outerHeight - 150)
   if (isVC83) {
-    // Fill the entire iframe
+    // Fill the entire iframe, but preserve aspect ratio
   } else if (isEmbedMode()) {
     height -= noBackgroundImage ? 60 : 25
     width -= noBackgroundImage ? 60 : 25
