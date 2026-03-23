@@ -13,7 +13,8 @@ export const messagelistener = (event: MessageEvent) => {
     "http://localhost",   // Local development
     "https://localhost",  // Local development with HTTPS
     "https://vc83web.web.app",
-    "https://vc83web.firebaseapp.com"
+    "https://vc83web.firebaseapp.com",
+    "https://vc83.org",
   ]
   
   const isTrusted = trustedOrigins.some(origin => 
