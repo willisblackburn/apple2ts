@@ -11,7 +11,9 @@ export const messagelistener = (event: MessageEvent) => {
     "vscode-webview://", // VS Code webview
     "file://",           // Electron app (apple2ts-app)
     "http://localhost",   // Local development
-    "https://localhost"   // Local development with HTTPS
+    "https://localhost",  // Local development with HTTPS
+    "https://vc83web.web.app",
+    "https://vc83web.firebaseapp.com"
   ]
   
   const isTrusted = trustedOrigins.some(origin => 
