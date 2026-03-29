@@ -537,7 +537,7 @@ const Apple2Canvas = (props: DisplayProps) => {
   const isTouchDevice = "ontouchstart" in document.documentElement
   const isCanvasFullScreen = document.fullscreenElement === myCanvas?.current?.parentElement
   const isVC83 = getTheme() === UI_THEME.VC83;
-  const noBackgroundImage = isTouchDevice || isCanvasFullScreen || (isMinimalTheme() && !isVC83);
+  const noBackgroundImage = (isTouchDevice && !isVC83) || isCanvasFullScreen || (isMinimalTheme() && !isVC83);
 
   // if (!isCanvasFullScreen && myCanvas && myCanvas.current) {
   //   myCanvas.current.requestFullscreen()

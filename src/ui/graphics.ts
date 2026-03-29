@@ -586,10 +586,10 @@ export const getCanvasSize = () => {
   const isTouchDevice = "ontouchstart" in document.documentElement
   const isCanvasFullScreen = document.fullscreenElement !== null
   const isVC83 = isVC83Theme()
-  const noBackgroundImage = isTouchDevice || isCanvasFullScreen || (isMinimalTheme() && !isVC83)
+  const noBackgroundImage = (isTouchDevice && !isVC83) || isCanvasFullScreen || (isMinimalTheme() && !isVC83)
   const margin = (handleGetMachineName() === "APPLE2P" && !isCanvasFullScreen && !isVC83) ? 0.17 : 0.075
-  xmargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : (isTouchDevice ? 0.01 : margin)
-  ymargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : (isTouchDevice ? 0.01 : margin)
+  xmargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : ((isTouchDevice && !isVC83) ? 0.01 : margin)
+  ymargin = (isEmbedMode() && noBackgroundImage) ? 0.0 : ((isTouchDevice && !isVC83) ? 0.01 : margin)
   const screenRatio = 1.4583334 // 1.33  // (20 * 40) / (24 * 24)
   if (TEST_GRAPHICS) {
     return [659, 452]  // This will give an actual size of 560 x 384

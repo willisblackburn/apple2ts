@@ -170,7 +170,7 @@ const DisplayApple2 = () => {
   if (isTouchDevice || theme === UI_THEME.VC83) {
     document.body.style.marginLeft = "0"
     document.body.style.marginRight = "0"
-    document.body.style.marginTop = (isLandscape && isTouchDevice) ? "10px" : "0"
+    document.body.style.marginTop = (isLandscape && isTouchDevice && theme !== UI_THEME.VC83) ? "10px" : "0"
     document.body.style.marginBottom = "0"
   }
   const mem = handleGetMemSize() + 64
